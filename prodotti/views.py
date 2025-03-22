@@ -19,6 +19,10 @@ def dettaglio(request, id):
                 "prod.nome": prod.nome,
                 "prod.descrizione": prod.descrizione,
                 "prod.categoria": prod.categoria,
-                "prod.immagine": prod.immagine
+                "prod.immagine": prod.immagine,
+                "prod.artista" : prod.artista,
+                "prod.anno_uscita" : prod.anno_uscita,
+                "prod.link_streaming" : prod.link_streaming,
+                "prod.etichetta" : prod.etichetta
                 }
         return render(request, "prodotti/dettaglio.html", context)
