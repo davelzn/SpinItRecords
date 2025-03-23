@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Imposta margini e padding a 0 per tutti gli elementi, migliorando la coerenza degli stili tra i vari browser */
 * {
     margin: 0;
@@ -9,22 +7,97 @@
 
 /* Stile per il corpo della pagina */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    padding: 20px;
+    background-color: #F9F9F9;
     color: #333;
+    padding: 20px;
+}
+
+/* Stile per il contenitore principale della lista di prodotti */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Crea una griglia che si adatta alla larghezza della pagina */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Stile per ogni prodotto */
+.product {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Effetto hover sui prodotti */
+.product:hover {
+    transform: scale(1.05);
+    /* Ingrandisce il prodotto */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    /* Aggiunge una ombra più forte */
+}
+
+/* Stile per il nome del prodotto */
+.product h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Stile per l'artista */
+.product h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #9B51E0;
+    /* Colore viola per l'artista */
+}
+
+/* Stile per la categoria del prodotto */
+.product .category {
+    font-size: 1em;
+    color: #777;
+    /* Colore grigio per la categoria */
+    margin-bottom: 15px;
+}
+
+/* Stile per le immagini dei prodotti */
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* Arrotonda gli angoli delle immagini */
+    margin-top: 15px;
+}
+
+/* Stile per i link (per non avere sottolineatura e per mantenere il colore di default) */
+.product a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stile per il titolo della pagina */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #F2C94C;
+    /* Colore giallo per il titolo */
+    margin-bottom: 30px;
 }
 
 /* Stile per la navbar */
 .navbar {
-    background-color: #15811a;
-    color: white;
-    padding: 15px 30px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .logo {
@@ -33,19 +106,20 @@ body {
 }
 
 .navbar .logo img {
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 
 .navbar .logo h1 {
-    font-size: 1.6em;
-    font-weight: bold;
+    color: #F2C94C;
+    /* Colore giallo per il logo */
+    font-size: 1.8em;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
-    align-items: center;
 }
 
 .navbar ul li {
@@ -53,187 +127,22 @@ body {
 }
 
 .navbar ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-size: 1.2em;
 }
 
 .navbar ul li a:hover {
-    color: #4CAF50;
-    text-decoration: underline;
+    color: #F2C94C;
+    /* Colore giallo quando si passa sopra i link */
 }
 
-/* Stile per il titolo principale */
-h1 {
+/* Stile per il footer */
+footer {
     text-align: center;
-    margin-bottom: 40px;
-    color: #4CAF50;
-    font-size: 2.5em;
-}
-
-/* Stile per la lista dei prodotti */
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Stile per ciascun prodotto */
-.product {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 20px;
-    margin: 10px;
-    width: calc(25% - 40px);
-    /* Quattro prodotti per riga con margini */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    overflow: hidden;
-}
-
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Stile per i titoli dei prodotti */
-.product h2 {
-    font-size: 1.4em;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Stile per le descrizioni dei prodotti */
-.product p {
-    margin-bottom: 10px;
-    color: #666;
-}
-
-/* Stile per i prezzi dei prodotti */
-.product p:last-of-type {
-    font-weight: bold;
-    color: #000;
-}
-
-/* Stile per le immagini dei prodotti */
-.product img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
-/* Stile per il dettaglio del prodotto */
-/* Stile per il dettaglio del prodotto */
-.product-detail {
-    background: #f8f8f8;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
     border-radius: 10px;
-    padding: 30px;
-    margin: 20px auto;
-    max-width: 900px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-}
-
-.product-detail:hover {
-    transform: translateY(-10px);
-    /* Effetto di sollevamento */
-}
-
-.product-header h1 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.product-header .category {
-    font-size: 1.2em;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-.product-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.product-image img {
-    max-width: 80%;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.product-description {
-    margin-top: 30px;
-    text-align: left;
-    font-size: 1.1em;
-    color: #555;
-}
-
-.product-description p {
-    margin: 15px 0;
-}
-
-.product-description strong {
-    color: #333;
-}
-
-.streaming-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #15811a;
-    color: white;
-    font-size: 1.1em;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.streaming-link:hover {
-    background-color: #4CAF50;
-}
-
-/* Stile per il link di ritorno */
-.back-link {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition: background-color 0.3s;
-}
-
-.back-link:hover {
-    background-color: #45a049;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .product-info {
-        flex-direction: column;
-    }
-
-    .product-image img {
-        max-width: 100%;
-    }
-
-    .product-description {
-        font-size: 1em;
-    }
-
-    .streaming-link,
-    .back-link {
-        font-size: 1em;
-        padding: 8px 18px;
-    }
 }

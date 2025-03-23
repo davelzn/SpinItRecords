@@ -3,29 +3,27 @@
 {% block title %} Catalogo Prodotti {% endblock %}
 
 {% block content %}
-
-
-
 {% if cata_prodotti %}
-    <h1>I nostri prodotti</h1>
-    <div class="product-list">
-        {% for prod in cata_prodotti %}
-            <a href="{% url 'dettaglio' prod.id %}">
-                <div class="product">
-                    <h2>{{ prod.nome }}</h2>
-                    <p>{{ prod.descrizione }}</p>
-                    <p>{{ prod.categoria }}</p>
-                    {% if prod.immagine.url %}
-                        <img src="{{ prod.immagine.url }}" alt="{{ prod.nome }}">
-                    {% endif %}
+<h1>Catalogo Vinili</h1>
+<div class="product-list">
+    {% for prod in cata_prodotti %}
+    <a href="{% url 'dettaglio' prod.id %}">
+        <div class="product">
+            <div class="product-info">
+                <h2>{{ prod.nome }}</h2>
+                <h3>{{ prod.artista }}</h3>
+                <p class="category">{{ prod.categoria }}</p>
+                {% if prod.immagine.url %}
+                <div class="product-image">
+                    <img src="{{ prod.immagine.url }}" alt="{{ prod.nome }}" />
                 </div>
-            </a>
-        {% endfor %}
-    </div>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
 {% else %}
-    <p>Non ci sono prodotti nel catalogo.</p>
+<p>Non ci sono prodotti nel catalogo.</p>
 {% endif %}
-
-
-
 {% endblock %}
