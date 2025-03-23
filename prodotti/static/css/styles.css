@@ -111,12 +111,55 @@ h1 {
     margin-right: 10px;
 }
 
+
 .navbar .logo h1 {
     color: #F2C94C;
     /* Colore giallo per il logo */
     font-size: 1.8em;
 }
+/* Stile per il pulsante "Ascolta in streaming" */
+.product-description .streaming-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #F2C94C;
+    /* Giallo */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px;
+    /* Bordo arrotondato */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Ombra leggera */
+}
 
+.product-description .streaming-link:hover {
+    background-color: #9B51E0;
+    /* Viola scuro */
+    transform: scale(1.05);
+    /* Leggero ingrandimento */
+}
+
+/* Stile per l'immagine del prodotto - ridurre la dimensione al 60% */
+.detail-image img {
+    width: 60%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+/* Aggiunta dello sfondo grigio chiaro tendente al bianco nella sezione prodotto */
+.product-detail {
+    background-color: #F5F5F5;
+    /* Grigio chiaro */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .navbar ul {
     list-style: none;
     display: flex;
@@ -145,4 +188,34 @@ footer {
     color: #fff;
     margin-top: 40px;
     border-radius: 10px;
+}
+.product-description .streaming-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #F2C94C;
+    /* Giallo */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px;
+    /* Bordo arrotondato */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Ombra leggera */
+}
+.product-description .streaming-link:hover {
+    background-color: #9B51E0;
+    /* Viola scuro */
+    transform: scale(1.05);
+    /* Leggero ingrandimento */
+}
+.product-detail {
+    background-color: #F5F5F5;
+    /* Grigio chiaro */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
