@@ -14,78 +14,11 @@ body {
     padding: 20px;
 }
 
-/* Stile per il contenitore principale della lista di prodotti */
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    /* Crea una griglia che si adatta alla larghezza della pagina */
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* Stile per ogni prodotto */
-.product {
-    background: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    text-align: center;
-}
-
-/* Effetto hover sui prodotti */
-.product:hover {
-    transform: scale(1.05);
-    /* Ingrandisce il prodotto */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    /* Aggiunge una ombra più forte */
-}
-
-/* Stile per il nome del prodotto */
-.product h2 {
-    font-size: 1.6em;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Stile per l'artista */
-.product h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #9B51E0;
-    /* Colore viola per l'artista */
-}
-
-/* Stile per la categoria del prodotto */
-.product .category {
-    font-size: 1em;
-    color: #777;
-    /* Colore grigio per la categoria */
-    margin-bottom: 15px;
-}
-
-/* Stile per le immagini dei prodotti */
-.product-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    /* Arrotonda gli angoli delle immagini */
-    margin-top: 15px;
-}
-
-/* Stile per i link (per non avere sottolineatura e per mantenere il colore di default) */
-.product a {
-    text-decoration: none;
-    color: inherit;
-}
-
 /* Stile per il titolo della pagina */
 h1 {
     text-align: center;
     font-size: 2.5em;
     color: #F2C94C;
-    /* Colore giallo per il titolo */
     margin-bottom: 30px;
 }
 
@@ -94,7 +27,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #343b3f;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -106,60 +39,17 @@ h1 {
 }
 
 .navbar .logo img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
     margin-right: 10px;
 }
 
-
 .navbar .logo h1 {
     color: #F2C94C;
-    /* Colore giallo per il logo */
     font-size: 1.8em;
 }
-/* Stile per il pulsante "Ascolta in streaming" */
-.product-description .streaming-link {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #F2C94C;
-    /* Giallo */
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-radius: 50px;
-    /* Bordo arrotondato */
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Ombra leggera */
-}
 
-.product-description .streaming-link:hover {
-    background-color: #9B51E0;
-    /* Viola scuro */
-    transform: scale(1.05);
-    /* Leggero ingrandimento */
-}
-
-/* Stile per l'immagine del prodotto - ridurre la dimensione al 60% */
-.detail-image img {
-    width: 60%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
-}
-
-/* Aggiunta dello sfondo grigio chiaro tendente al bianco nella sezione prodotto */
-.product-detail {
-    background-color: #F5F5F5;
-    /* Grigio chiaro */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 .navbar ul {
     list-style: none;
     display: flex;
@@ -177,7 +67,65 @@ h1 {
 
 .navbar ul li a:hover {
     color: #F2C94C;
-    /* Colore giallo quando si passa sopra i link */
+}
+
+/* Stile per il contenitore principale della lista di prodotti */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Stile per ogni prodotto */
+.product {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-align: center;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Stile per il nome del prodotto */
+.product h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Stile per l'artista */
+.product h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #9B51E0;
+}
+
+/* Stile per la categoria del prodotto */
+.product .category {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Stile per le immagini dei prodotti */
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* Stile per i link */
+.product a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Stile per il footer */
@@ -189,33 +137,139 @@ footer {
     margin-top: 40px;
     border-radius: 10px;
 }
+
+/* ---- STILE PER LA PAGINA DI DETTAGLIO PRODOTTO ---- */
+
+/* Contenitore del dettaglio prodotto */
+.product-detail {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+}
+.product-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribuisce gli elementi su tutta la riga */
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+}
+/* Header del prodotto */
+.product-header h1 {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+/* Contenitore informazioni prodotto */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Immagine del prodotto */
+.detail-image img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* Descrizione del prodotto */
+.product-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
+    max-width: 600px;
+}
+
+/* Evidenzia le etichette nella descrizione */
+.product-description p strong {
+    color: #9B51E0;
+}
+
+/* Pulsante "Ascolta in streaming" */
 .product-description .streaming-link {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 12px 25px;
     background-color: #F2C94C;
-    /* Giallo */
     color: #fff;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: bold;
-    border-radius: 50px;
-    /* Bordo arrotondato */
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /* Ombra leggera */
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
 .product-description .streaming-link:hover {
     background-color: #9B51E0;
-    /* Viola scuro */
-    transform: scale(1.05);
-    /* Leggero ingrandimento */
+    transform: translateY(-2px);
 }
-.product-detail {
-    background-color: #F5F5F5;
-    /* Grigio chiaro */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+/* Pulsante per tornare alla home */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
 }
+
+.back-link:hover {
+    background-color: #9B51E0;
+}
+/* Pulsante "Aggiungi ai preferiti" */
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+    color: red;
+}
+/* 🔹 Contenitore della barra di filtro */
+.genre-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* 🔹 Stile pulsanti di filtro */
+.filter-btn {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #ffcc00;
+    color: #222;
+}
+

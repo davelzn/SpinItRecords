@@ -6,6 +6,9 @@
 <div class="product-detail">
     <div class="product-header">
         <h1>{{ prod.nome }}</h1>
+        <button class="favorite-btn">
+            ❤️
+        </button>
     </div>
 
     <div class="product-info">
@@ -22,8 +25,7 @@
             <p><strong>Anno di uscita:</strong> {{ prod.anno_uscita }}</p>
             <p><strong>Etichetta:</strong> {{ prod.etichetta }}</p>
 
-            <p><a href="{{ prod.link_streaming }}" target="_blank" class="streaming-link">Ascolta l'album in
-                    streaming</a></p>
+            <p><a href="{{ prod.link_streaming }}" target="_blank" class="streaming-link">Ascolta l'album in streaming</a></p>
         </div>
     </div>
 

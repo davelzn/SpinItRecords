@@ -3,8 +3,16 @@
 {% block title %} Catalogo Prodotti {% endblock %}
 
 {% block content %}
-{% if cata_prodotti %}
 <h1>Catalogo Vinili</h1>
+<div class="genre-filter">
+    <button class="filter-btn" data-genre="Tutti">Tutti</button>
+    <button class="filter-btn" data-genre="Pop">Pop</button>
+    <button class="filter-btn" data-genre="Rap">Rap</button>
+    <button class="filter-btn" data-genre="Rock">Rock</button>
+    <button class="filter-btn" data-genre="Jazz">Jazz</button>
+    <button class="filter-btn" data-genre="R&B">R&B</button>
+</div>
+{% if cata_prodotti %}
 <div class="product-list">
     {% for prod in cata_prodotti %}
     <a href="{% url 'dettaglio' prod.id %}">
