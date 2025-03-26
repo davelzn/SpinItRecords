@@ -26,3 +26,21 @@ def dettaglio(request, id):
                 "prod.etichetta" : prod.etichetta
                 }
         return render(request, "prodotti/dettaglio.html", context)
+def recensioni(request):
+    if request.method=="GET":
+        prod = Prodotto.objects.get(id=id)
+        context = {
+                'prod': prod,
+                "prod.nome": prod.nome,
+                "prod.descrizione": prod.descrizione,
+                "prod.categoria": prod.categoria,
+                "prod.immagine": prod.immagine,
+                "prod.artista" : prod.artista,
+                "prod.anno_uscita" : prod.anno_uscita,
+                "prod.link_streaming" : prod.link_streaming,
+                "prod.etichetta" : prod.etichetta
+                }
+    return render(request, 'prodotti/recensioni.html', context)
+
+def preferiti(request):
+    return render(request, 'prodotti/preferiti.html')

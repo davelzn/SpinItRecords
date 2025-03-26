@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 /* Stile per il corpo della pagina */
 body {
@@ -310,4 +313,27 @@ footer {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.review-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-review-btn {
+    display: inline-block;
+    background: #F2C94C;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 13px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-review-btn:hover {
+    background: #9B51E0;
+    transform: scale(1.05);
 }
