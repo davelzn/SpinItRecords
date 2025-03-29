@@ -24,7 +24,7 @@ body {
 }
 
 /* Stile per il titolo della pagina */
-.logo h1 {
+ h1 {
     font-family: 'Tektur';
     font-size: 48px;
     text-transform: uppercase;
