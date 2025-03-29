@@ -7,10 +7,17 @@ from prodotti.models import Prodotto,Preferito
 # Create your views here.
 def home(request):
     if request.method=="GET":
+        return render(request, "prodotti/home.html")
+def login(request):
+    if request.method=="GET":
+        return render(request, "prodotti/login.html")
+    
+def prodotti(request):
+    if request.method=="GET":
         cata_prodotti = Prodotto.objects.all()
         context = {"cata_prodotti": cata_prodotti}
-        return render(request, "prodotti/home.html", context)
-    
+        return render(request, "prodotti/prodotti.html", context)
+
 def dettaglio(request, id):
     if request.method=="GET":
         prod = Prodotto.objects.get(id=id)

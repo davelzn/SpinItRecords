@@ -1,37 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %} Catalogo Prodotti {% endblock %}
+{% block title %} Home - SpinIt Records {% endblock %}
 
 {% block content %}
-<h1>Catalogo Vinili</h1>
-<div class="genre-filter">
-    <button class="filter-btn" data-genre="Tutti">Tutti</button>
-    <button class="filter-btn" data-genre="Pop">Pop</button>
-    <button class="filter-btn" data-genre="Rap">Rap</button>
-    <button class="filter-btn" data-genre="Rock">Rock</button>
-    <button class="filter-btn" data-genre="Jazz">Jazz</button>
-    <button class="filter-btn" data-genre="R&B">R&B</button>
+<div class="intro">
+    <h1>Benvenuto su SpinIt Records</h1>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>🎶 Scopri i migliori vinili</h2>
+        <p>Un catalogo di dischi selezionati per veri appassionati di musica.</p>
+        <a href="{% url 'prodotti' %}" class="btn">🎵 Esplora il Catalogo</a>
+    </div>
+
+    <!-- Call to Action per login/registrazione -->
+    <div class="cta">
+        <h2>🎟️ Unisciti alla nostra community</h2>
+        <p>Registrati per creare la tua collezione e lasciare recensioni.</p>
+        <a href="{% url 'login' %}" class="btn">🔑 Accedi / Registrati</a>
+    </div>
 </div>
-{% if cata_prodotti %}
-<div class="product-list">
-    {% for prod in cata_prodotti %}
-    <a href="{% url 'dettaglio' prod.id %}">
-        <div class="product">
-            <div class="product-info">
-                <h2>{{ prod.nome }}</h2>
-                <h3>{{ prod.artista }}</h3>
-                <p class="category">{{ prod.categoria }}</p>
-                {% if prod.immagine.url %}
-                <div class="product-image">
-                    <img src="{{ prod.immagine.url }}" alt="{{ prod.nome }}" />
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
-{% else %}
-<p>Non ci sono prodotti nel catalogo.</p>
-{% endif %}
 {% endblock %}

@@ -4,28 +4,37 @@
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
 
 /* Stile per il corpo della pagina */
 body {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-color: #0a0a0a;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #918f8f;
     color: #333;
     padding: 20px;
 }
 
 /* Stile per il titolo della pagina */
-h1 {
-    font-family: 'Rock Salt', sans-serif;
+.logo h1 {
+    font-family: 'Tektur';
     font-size: 48px;
     text-transform: uppercase;
     text-align: center;
     color: #F2C94C;
     margin-bottom: 30px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    /* Ombra per un effetto più intenso */
 }
+
 
 /* Stile per la navbar */
 .navbar {
@@ -38,6 +47,7 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo navbar */
 .navbar .logo {
     display: flex;
     align-items: center;
@@ -55,22 +65,82 @@ h1 {
     font-size: 1.8em;
 }
 
+/* Stile per la lista della navbar */
 .navbar ul {
     list-style: none;
     display: flex;
 }
 
 .navbar ul li {
-    margin-left: 20px;
+    margin-left: 30px;
+    /* Aumentato per più spazio tra le voci */
 }
 
 .navbar ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    /* Maggiore per la leggibilità */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+    /* Transizione per colore e ingrandimento */
 }
 
 .navbar ul li a:hover {
+    color: #F2C94C;
+    transform: scale(1.1);
+    /* Ingigantisce l'icona al passaggio del mouse */
+}
+
+/* Aggiungi una dimensione per le icone */
+.navbar ul li i {
+    margin-right: 8px;
+    /* Distanza tra l'icona e il testo */
+    font-size: 1.6em;
+    /* Puoi aggiustare la grandezza delle icone */
+}
+/* Stile per il footer */
+.footer {
+    background-color: #343b3f;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer p strong {
+    font-weight: bold;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.footer-links a:hover {
     color: #F2C94C;
 }
 
@@ -84,8 +154,10 @@ h1 {
 
 /* Stile per ogni prodotto */
 .product {
-    background: #fff;
+    background: #343b3f;
     border-radius: 10px;
+    height: 450px;
+
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -102,7 +174,7 @@ h1 {
 .product h2 {
     font-size: 1.6em;
     margin-bottom: 10px;
-    color: #333;
+    color: #fff;
 }
 
 /* Stile per l'artista */
@@ -115,7 +187,7 @@ h1 {
 /* Stile per la categoria del prodotto */
 .product .category {
     font-size: 1em;
-    color: #777;
+    color: #fff;
     margin-bottom: 15px;
 }
 
@@ -133,15 +205,7 @@ h1 {
     color: inherit;
 }
 
-/* Stile per il footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    margin-top: 40px;
-    border-radius: 10px;
-}
+
 
 /* ---- STILE PER LA PAGINA DI DETTAGLIO PRODOTTO ---- */
 
@@ -154,6 +218,7 @@ footer {
     max-width: 800px;
     margin: 40px auto;
 }
+
 .product-header {
     display: flex;
     align-items: center;
@@ -163,6 +228,7 @@ footer {
     padding-bottom: 15px;
     border-bottom: 2px solid #ddd;
 }
+
 /* Header del prodotto */
 .product-header h1 {
     font-size: 2em;
@@ -240,6 +306,7 @@ footer {
 .back-link:hover {
     background-color: #9B51E0;
 }
+
 /* Pulsante "Aggiungi ai preferiti" */
 .favorite-btn {
     background: none;
@@ -253,6 +320,7 @@ footer {
     transform: scale(1.2);
     color: red;
 }
+
 /* 🔹 Contenitore della barra di filtro */
 .genre-filter {
     display: flex;
@@ -279,9 +347,10 @@ footer {
 }
 
 .container {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .preferiti-list {
@@ -336,4 +405,144 @@ footer {
 .add-review-btn:hover {
     background: #9B51E0;
     transform: scale(1.05);
+}
+
+.piastre {
+    width: 100%;
+    height: 100%;
+    background-color: #111111;
+    background-image: linear-gradient(32deg,
+            rgba(8, 8, 8, 0.74) 30px,
+            transparent);
+    background-size: 100px 100px;
+    background-position: -5px -5px;
+}
+
+
+/* Container principale */
+.intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+    /* Nero per lo sfondo */
+    color: white;
+    /* Scritte bianche */
+}
+
+.intro h1 {
+    font-family: 'Dancing Script';
+    font-size: 48px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #F2C94C;
+    /* Giallo per il titolo */
+    margin-bottom: 30px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #8A2BE2, #F2C94C);
+    /* Viola e giallo */
+    color: white;
+    /* Scritte bianche */
+    padding: 80px 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #F2C94C;
+    /* Giallo per il bottone */
+    color: #000;
+    /* Nero per il testo */
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: #8A2BE2;
+    /* Viola per il bottone hover */
+    color: #fff;
+    /* Scritte bianche quando hover */
+    transform: scale(1.1);
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: #000;
+    /* Nero per lo sfondo */
+    border: 2px solid #8A2BE2;
+    
+    /* Viola per il bordo */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.cta h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta .btn {
+    background-color: #8A2BE2;
+    /* Viola per il bottone */
+    color: #fff;
+    /* Scritte bianche */
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.cta .btn:hover {
+    /* Giallo per il bottone hover */
+    color: #fbff24;
+    /* Nero per il testo quando hover */
+    transform: scale(1.1);
+}
+
+/* Animazione Hero */
+.hero h2 {
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
