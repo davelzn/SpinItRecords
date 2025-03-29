@@ -12,6 +12,10 @@ def login(request):
     if request.method=="GET":
         return render(request, "prodotti/login.html")
     
+def register(request):
+    if request.method=="GET":
+        return render(request, "prodotti/register.html")
+    
 def prodotti(request):
     if request.method=="GET":
         cata_prodotti = Prodotto.objects.all()
@@ -51,3 +55,15 @@ def recensioni(request):
 
 def preferiti(request):
     return render(request, 'prodotti/preferiti.html')
+
+def set_cookie(request):
+    response = HttpResponse('Impostare un cookie')
+    response.set_cookie('user_prefernce', 'dark_mode', max_age=3600)
+    return response
+def get_cookie(request):
+    preference = request.COOKIES.get('user_prefernce','default_mode')
+    return HttpResponse(f'La prefernza é: {preference}')
+def delete_cookie(request):
+    response = HttpResponse('Cookie eliminato!')
+    response.delete_cookie('user_preference')    
+    return response
