@@ -12,6 +12,8 @@ class Prodotto(models.Model):
     anno_uscita = models.CharField(max_length = 5)
     link_streaming = models.CharField(max_length = 5000)
     etichetta = models.CharField(max_length = 100)
+    nazione = models.CharField(max_length=100, null=True, blank=True)
+    lingua = models.CharField(max_length=50, null=True, blank=True)
 
 # ForeignKey
 class Preferito(models.Model):

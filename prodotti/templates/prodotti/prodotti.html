@@ -5,13 +5,31 @@
 {% block content %}
 <div class="piastre">
 <h1>Catalogo Vinili</h1>
-<div class="genre-filter">
-    <button class="filter-btn" data-genre="Tutti">Tutti</button>
-    <button class="filter-btn" data-genre="Pop">Pop</button>
-    <button class="filter-btn" data-genre="Rap">Rap</button>
-    <button class="filter-btn" data-genre="Rock">Rock</button>
-    <button class="filter-btn" data-genre="Jazz">Jazz</button>
-    <button class="filter-btn" data-genre="R&B">R&B</button>
+<div class="filter-container">
+    <!-- Filtro per genere -->
+    <div class="genre-filter">
+        <button class="filter-btn" data-genre="Tutti">Tutti</button>
+        <button class="filter-btn" data-genre="Pop">Pop</button>
+        <button class="filter-btn" data-genre="Rap">Rap</button>
+        <button class="filter-btn" data-genre="Rock">Rock</button>
+        <button class="filter-btn" data-genre="Jazz">Jazz</button>
+        <button class="filter-btn" data-genre="R&B">R&B</button>
+    </div>
+
+    <!-- Filtro per nazione (aggiunto tra la barra di ricerca e il filtro per genere) -->
+    <div class="nation-filter">
+        <select id="nation-select" class="filter-select">
+            <option value="all" selected>Tutti</option>
+            <option value="Italia">Italia</option>
+            <option value="Estero">Estero</option>
+        </select>
+    </div>
+</div>
+<div class="search-container">
+    <form action="#" method="GET">
+        <input type="text" name="q" placeholder="Cerca nel catalogo..." class="search-input">
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+    </form>
 </div>
 {% if cata_prodotti %}
 <div class="product-list">
