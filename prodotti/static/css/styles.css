@@ -14,7 +14,7 @@ body {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-color: #0a0a0a;
+    background-color: #252525;
     background-position: center;
     background-repeat: no-repeat;
     font-family: 'Arial', sans-serif;
@@ -37,14 +37,13 @@ body {
 .piastre {
     width: 100%;
     height: 100%;
-    background-color: #111111;
+    background-color: #222222;
     background-image: linear-gradient(32deg,
-            rgba(8, 8, 8, 0.74) 30px,
+            rgba(50, 50, 50, 0.5) 30px,
             transparent);
     background-size: 100px 100px;
     background-position: -5px -5px;
 }
-
 
 /* Stile per la navbar */
 .navbar {
@@ -166,7 +165,7 @@ body {
 
 /* 🔹 Stile pulsanti di filtro */
 .filter-btn {
-    background: #222;
+    background: #060606;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -191,7 +190,7 @@ body {
 
 /* 🔹 Stile selettore nazione */
 .filter-select {
-    background: #222;
+    background: #000000;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -234,7 +233,7 @@ body {
 
 /* 🔹 Stile per il campo di ricerca */
 .search-input {
-    background: #222;
+    background: #000000;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -254,7 +253,7 @@ body {
 
 /* 🔹 Stile per il pulsante di ricerca */
 .search-btn {
-    background: #222;
+    background: #000000;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -283,7 +282,6 @@ body {
     background: #343b3f;
     border-radius: 10px;
     height: 450px;
-
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -360,6 +358,7 @@ body {
     font-size: 2em;
     color: #333;
     text-align: center;
+    margin-left: 45px;
     flex-grow: 1;
     margin-bottom: 20px;
 }
@@ -467,6 +466,7 @@ body {
 .back-link:hover {
     background-color: #9B51E0;
 }
+
 
 /* --- STILE PER LA HOME PAGE --- */
 .intro {

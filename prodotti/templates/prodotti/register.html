@@ -6,6 +6,8 @@
 <div class="auth-container">
     <h1>REGISTER</h1>
     <form method="POST">
+        {% csrf_token %}
+
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 

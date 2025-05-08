@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, prodotti,dettaglio, recensioni, preferiti, login, register
+from .views import home, prodotti,dettaglio, recensioni, preferiti, login_view, register
 from django.conf import settings
 from django.conf.urls.static import static 
 
@@ -10,7 +10,7 @@ urlpatterns = [
     path('recensioni/', recensioni, name='recensioni'),
     path('preferiti/', preferiti, name="preferiti"),
     path('prodotti/', prodotti, name="prodotti"),
-    path('login/', login, name="login"),
+    path('login/', login_view, name="login"),
     path('register/', register, name="register"),
 ]
 if settings.DEBUG:

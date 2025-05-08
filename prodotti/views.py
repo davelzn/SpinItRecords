@@ -1,20 +1,56 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
+from django.contrib import messages
 from prodotti.models import Prodotto,Preferito
 
 # Create your views here.
 def home(request):
     if request.method=="GET":
         return render(request, "prodotti/home.html")
-def login(request):
-    if request.method=="GET":
-        return render(request, "prodotti/login.html")
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return render(request, "prodotti/login.html", {
+                "logged": True,
+                "user": user
+            })
+        else:
+            messages.error(request, "Credenziali non valide")
+
+    return render(request, "prodotti/login.html", {
+        "logged": request.user.is_authenticated,
+        "user": request.user
+    })
+
     
 def register(request):
-    if request.method=="GET":
-        return render(request, "prodotti/register.html")
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username già esistente")
+            return redirect("register")
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email già registrata")
+            return redirect("register")
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        messages.success(request, "Registrazione avvenuta con successo!")
+        return redirect("login") 
+
+    return render(request, "prodotti/register.html")
     
 def prodotti(request):
     if request.method=="GET":
@@ -54,3 +90,9 @@ def delete_cookie(request):
     response = HttpResponse('Cookie eliminato!')
     response.delete_cookie('user_preference')    
     return response
+
+def user_status(request):
+    return {
+        "logged": request.user.is_authenticated,
+        "user": request.user
+    }

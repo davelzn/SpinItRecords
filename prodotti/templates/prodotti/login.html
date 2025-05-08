@@ -5,7 +5,11 @@
 {% block content %}
 <div class="auth-container">
     <h1>LOGIN</h1>
+    {% if logged %}
+    <p>Sei già loggato come {{ user.username }}</p>
+{% else %}
     <form method="POST">
+        {% csrf_token %}
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 
@@ -14,6 +18,7 @@
 
         <button type="submit">Accedi</button>
     </form>
-    <p>Non hai un account? <a href="{% url 'register' %}">Registrati</a></p>
+{% endif %}
+
 </div>
 {% endblock %}
