@@ -713,7 +713,40 @@ body {
 .auth-container a:hover {
     text-decoration: underline;
 }
+.logged-info {
+    background-color: #1f1f1f;
+    border-left: 4px solid #F2C94C;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1em;
+    width: 350px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
+.logout-form {
+    margin-top: 10px;
+    width: 350px;
+}
+
+.logout-form button {
+    background-color: #F2C94C;
+    color: #333;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.logout-form button:hover {
+    background-color: #ffdd55;
+}
+
+/*RECENSIONI*/
 .recensioni-container {
     max-width: 600px;
     margin: auto;

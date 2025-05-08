@@ -6,9 +6,21 @@
 <div class="product-detail">
     <div class="product-header">
         <h1>{{ prod.nome }}</h1>
-        <button class="favorite-btn">
-            ❤️
-        </button>
+    
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'toggle_preferito' prod.id %}">
+                {% csrf_token %}
+                <button type="submit" class="favorite-btn">
+                    {% if user in prod.preferiti.all %}
+                        💔
+                    {% else %}
+                        ❤️
+                    {% endif %}
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}" class="favorite-btn">❤️</a>
+        {% endif %}
     </div>
 
     <div class="product-info">

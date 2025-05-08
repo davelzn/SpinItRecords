@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from prodotti.models import Prodotto,Preferito
@@ -90,9 +91,24 @@ def delete_cookie(request):
     response = HttpResponse('Cookie eliminato!')
     response.delete_cookie('user_preference')    
     return response
+def logout_view(request):
+    logout(request)
+    return redirect('login') 
 
 def user_status(request):
     return {
         "logged": request.user.is_authenticated,
         "user": request.user
     }
+
+@login_required
+def toggle_preferito(request, prodotto_id):
+    prodotto = get_object_or_404(Prodotto, pk=prodotto_id)
+    user = request.user
+
+    if user in prodotto.preferiti.all():
+        prodotto.preferiti.remove(user)
+    else:
+        prodotto.preferiti.add(user)
+
+    return redirect('dettaglio_prodotto', prodotto_id=prodotto.id)

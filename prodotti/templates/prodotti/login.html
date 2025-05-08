@@ -6,7 +6,14 @@
 <div class="auth-container">
     <h1>LOGIN</h1>
     {% if logged %}
-    <p>Sei già loggato come {{ user.username }}</p>
+    <div class="logged-info">
+        <p>Sei già loggato come {{ user.username }}</p>
+    </div>
+    <form action="{% url 'logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
 {% else %}
     <form method="POST">
         {% csrf_token %}
@@ -18,6 +25,7 @@
 
         <button type="submit">Accedi</button>
     </form>
+    <p>Non hai un account? <a href="{% url 'register' %}">Registrati</a></p>
 {% endif %}
 
 </div>

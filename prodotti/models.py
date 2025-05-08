@@ -14,13 +14,14 @@ class Prodotto(models.Model):
     etichetta = models.CharField(max_length = 100)
     nazione = models.CharField(max_length=100, null=True, blank=True)
     lingua = models.CharField(max_length=50, null=True, blank=True)
+    preferiti = models.ManyToManyField(User, related_name="prodotti_prefriti", blank=True)
 
 # ForeignKey
 class Preferito(models.Model):
     id_utente = models.ForeignKey(User, on_delete = models.CASCADE)
     id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)
-
-
+    def __str__(self):
+        return f'{self.user.username} preferito {self.prodotto.nome}'
 class Valutazione(models.Model):
     id_utente = models.ForeignKey(User, on_delete = models.CASCADE)
     id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)

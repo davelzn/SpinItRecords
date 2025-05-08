@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, prodotti,dettaglio, recensioni, preferiti, login_view, register
+from .views import home, prodotti,dettaglio, recensioni, preferiti, login_view, register, logout_view, toggle_preferito
 from django.conf import settings
 from django.conf.urls.static import static 
 
@@ -12,6 +12,10 @@ urlpatterns = [
     path('prodotti/', prodotti, name="prodotti"),
     path('login/', login_view, name="login"),
     path('register/', register, name="register"),
+    path('logout/', logout_view, name='logout'),
+    path('toggle_preferito/<int:prodotto_id>/', toggle_preferito, name='toggle_preferito'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
