@@ -9,7 +9,7 @@
     <ul class="preferiti-list">
         {% for preferito in preferiti %}
         <li class="preferito-item">
-            <a href="{% url 'dettaglio_prodotto' preferito.prodotto.id %}">
+            <a href="{% url 'dettaglio' preferito.prodotto.id %}">
                 <img src="{{ preferito.prodotto.immagine.url }}" alt="{{ preferito.prodotto.nome }}">
                 <span>{{ preferito.prodotto.nome }}</span>
             </a>

@@ -17,11 +17,6 @@ class Prodotto(models.Model):
     preferiti = models.ManyToManyField(User, related_name="prodotti_prefriti", blank=True)
 
 # ForeignKey
-class Preferito(models.Model):
-    id_utente = models.ForeignKey(User, on_delete = models.CASCADE)
-    id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)
-    def __str__(self):
-        return f'{self.user.username} preferito {self.prodotto.nome}'
 class Valutazione(models.Model):
     id_utente = models.ForeignKey(User, on_delete = models.CASCADE)
     id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)

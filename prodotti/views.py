@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.contrib import messages
-from prodotti.models import Prodotto,Preferito
+from prodotti.models import Prodotto
 
 # Create your views here.
 def home(request):
@@ -54,10 +55,35 @@ def register(request):
     return render(request, "prodotti/register.html")
     
 def prodotti(request):
-    if request.method=="GET":
-        cata_prodotti = Prodotto.objects.all()
-        context = {"cata_prodotti": cata_prodotti}
-        return render(request, "prodotti/prodotti.html", context)
+    cata_prodotti = Prodotto.objects.all()
+    genere = request.GET.get('genre')
+    nazione = request.GET.get('nation')
+    ricerca = request.GET.get('q')
+    
+
+    if genere and genere != "Tutti":
+        cata_prodotti = cata_prodotti.filter(categoria__iexact=genere)
+
+    if nazione and nazione.lower() != "all":
+        if nazione.lower() == "italia":
+            cata_prodotti = cata_prodotti.filter(nazione__iexact="Italia")
+        elif nazione.lower() == "estero":
+            cata_prodotti = cata_prodotti.exclude(nazione__iexact="Italia")
+
+
+    if ricerca:
+        cata_prodotti = cata_prodotti.filter(
+            Q(nome__icontains=ricerca) | Q(artista__icontains=ricerca)
+        )
+    generi = ["Tutti", "Pop", "Rap", "Rock", "Jazz", "R&B"]
+
+    context = {
+        "cata_prodotti": cata_prodotti,
+        "generi": generi,
+    }
+
+    return render(request, "prodotti/prodotti.html", context)
+
 
 def dettaglio(request, id):
     if request.method=="GET":
