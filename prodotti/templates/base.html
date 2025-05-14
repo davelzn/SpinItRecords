@@ -13,8 +13,11 @@
     <div class="piastre">
     <nav class="navbar">
         <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo">
-            <h1>SpinIt Records</h1>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+            </a>
+
+            <h1 class="titolone">SpinIt Records</h1>
         </div>
         <ul>
             <li><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>

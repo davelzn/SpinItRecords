@@ -8,6 +8,15 @@
 html {
     scroll-behavior: smooth;
 }
+.titolone {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white; /* o il colore che vuoi */
+  line-height: 60px; /* allineamento verticale se la navbar ha altezza fissa */
+}
+
 
 /* Stile per il corpo della pagina */
 body {
