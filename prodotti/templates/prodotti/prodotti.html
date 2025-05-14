@@ -4,37 +4,37 @@
 
 {% block content %}
 <div class="piastre">
-<h1>Catalogo Vinili</h1>
-    <form action="" method="GET">
-        <div class="filter-container">
-            <!-- Filtro per genere -->
-            <div class="genre-filter">
-                {% for g in generi %}
-                <button type="submit" name="genre" value="{{ g }}" class="filter-btn {% if request.GET.genre == g %}active{% endif %}">
-                    {{ g }}
-                </button>
-                {% endfor %}
+    <h1>Catalogo Vinili</h1>
+        <form action="" method="GET">
+            <div class="filter-container">
+                <!-- Filtro per genere -->
+                <div class="genre-filter">
+                    {% for g in generi %}
+                    <button type="submit" name="genre" value="{{ g }}" class="filter-btn {% if request.GET.genre == g %}active{% endif %}">
+                        {{ g }}
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <!-- Filtro per nazione -->
+                <div class="nation-filter">
+                    <select id="nation-select" name="nation" class="filter-select" onchange="this.form.submit()">
+                        <option value="all" {% if request.GET.nation == "all" or not request.GET.nation %}selected{% endif %}>Tutti</option>
+                        <option value="Italia" {% if request.GET.nation == "Italia" %}selected{% endif %}>Italia</option>
+                        <option value="Estero" {% if request.GET.nation == "Estero" %}selected{% endif %}>Estero</option>
+                    </select>
+                </div>
             </div>
 
-            <!-- Filtro per nazione -->
-            <div class="nation-filter">
-                <select id="nation-select" name="nation" class="filter-select" onchange="this.form.submit()">
-                    <option value="all" {% if request.GET.nation == "all" or not request.GET.nation %}selected{% endif %}>Tutti</option>
-                    <option value="Italia" {% if request.GET.nation == "Italia" %}selected{% endif %}>Italia</option>
-                    <option value="Estero" {% if request.GET.nation == "Estero" %}selected{% endif %}>Estero</option>
-                </select>
+            <div class="search-container">
+                <input type="text" name="q" placeholder="Cerca nel catalogo..." class="search-input" value="{{ request.GET.q }}">
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                <a href="{% url 'prodotti' %}" class="search-btn">
+                    <i class="fas fa-times"></i> 
+                </a>
             </div>
-        </div>
-
-        <div class="search-container">
-            <input type="text" name="q" placeholder="Cerca nel catalogo..." class="search-input" value="{{ request.GET.q }}">
-            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
-            <a href="{% url 'prodotti' %}" class="search-btn">
-                <i class="fas fa-times"></i> 
-            </a>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 
 {% if cata_prodotti %}
 <div class="product-list">

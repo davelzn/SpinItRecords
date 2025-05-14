@@ -6,22 +6,10 @@
 <div class="container">
     <h1>I miei Preferiti</h1>
     {% if preferiti %}
-    <ul class="preferiti-list">
-        {% for preferito in preferiti %}
-        <li class="preferito-item">
-            <a href="{% url 'dettaglio' preferito.prodotto.id %}">
-                <img src="{{ preferito.prodotto.immagine.url }}" alt="{{ preferito.prodotto.nome }}">
-                <span>{{ preferito.prodotto.nome }}</span>
-            </a>
-            <form action="{% url 'gestisci_preferito' preferito.prodotto.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn-remove">❌ Rimuovi</button>
-            </form>
-        </li>
-        {% endfor %}
+    
     </ul>
     {% else %}
-    <p>Non hai ancora aggiunto nessun prodotto ai preferiti.</p>
+    <p class="alert-text">Non hai ancora aggiunto nessun prodotto ai preferiti.</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -137,4 +137,4 @@ def toggle_preferito(request, prodotto_id):
     else:
         prodotto.preferiti.add(user)
 
-    return redirect('dettaglio_prodotto', prodotto_id=prodotto.id)
+    return redirect('dettaglio', prodotto_id=prodotto.id)

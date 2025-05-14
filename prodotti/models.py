@@ -28,3 +28,6 @@ class Commento(models.Model):
     id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)
     testo = models.CharField(max_length=5000) 
     data = models.DateTimeField(auto_now_add=True)  
+
+class Utente(User):
+    preferiti = models.ManyToManyField(Prodotto,blank=True )
