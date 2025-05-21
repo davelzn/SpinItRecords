@@ -1,7 +1,62 @@
 {% extends "base.html" %}
 
-{% block title %} Home - SpinIt Records {% endblock %}
+{% block title %} Recensioni - {{ prodotto.nome }} {% endblock %}
 
 {% block content %}
-<h1>RECENSIONI</h1>>
+<div class="recensioni-container">
+    <h1>Recensioni per: {{ prodotto.nome }}</h1>
+
+    <div class="media-stelle">
+        <strong>Media stelle:</strong>
+        {% if media_stelle %}
+        {{ media_stelle|floatformat:1 }} / 5 ⭐
+        {% else %}
+        Ancora nessuna valutazione
+        {% endif %}
+    </div>
+
+    {% if user.is_authenticated %}
+    <h2>Commenti:</h2>
+
+    {% if commenti and commenti.count > 0 %}
+    <ul>
+        {% for commento in commenti %}
+        <li>
+            <strong>{{ commento.id_utente.username }}</strong> - {{ commento.data|date:"d/m/Y H:i" }}<br>
+            {{ commento.testo }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nessun commento ancora, sii il primo!</p>
+    {% endif %}
+
+    {% if ha_recensito %}
+    <p>Hai già scritto una recensione per questo prodotto 👍</p>
+    {% else %}
+    <h3>Scrivi una recensione</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="punteggio">Valuta da 1 a 5 stelle:</label>
+        <select name="punteggio" id="punteggio" required>
+            <option value="">Seleziona</option>
+            {% for i in "12345" %}
+            <option value="{{ i }}">{{ i }} ⭐</option>
+            {% endfor %}
+        </select>
+
+        <label for="testo">Il tuo commento:</label><br>
+        <textarea name="testo" id="testo" rows="4" required></textarea><br>
+
+        <button type="submit">Invia recensione</button>
+    </form>
+    {% endif %}
+
+    {% else %}
+    <p>Devi essere <a href="{% url 'login' %}?next={{ request.path }}">loggato</a> per vedere i commenti e scrivere
+        recensioni.</p>
+    {% endif %}
+
+    <a href="{% url 'dettaglio' prodotto.id %}">← Torna al prodotto</a>
+</div>
 {% endblock %}

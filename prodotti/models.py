@@ -14,7 +14,7 @@ class Prodotto(models.Model):
     etichetta = models.CharField(max_length = 100)
     nazione = models.CharField(max_length=100, null=True, blank=True)
     lingua = models.CharField(max_length=50, null=True, blank=True)
-    preferiti = models.ManyToManyField(User, related_name="prodotti_prefriti", blank=True)
+    preferiti = models.ManyToManyField(User, related_name="prodotti_preferiti", blank=True)
 
 # ForeignKey
 class Valutazione(models.Model):
@@ -27,7 +27,4 @@ class Commento(models.Model):
     id_utente = models.ForeignKey(User, on_delete = models.CASCADE)
     id_prodotto = models.ForeignKey(Prodotto, on_delete =models.CASCADE)
     testo = models.CharField(max_length=5000) 
-    data = models.DateTimeField(auto_now_add=True)  
-
-class Utente(User):
-    preferiti = models.ManyToManyField(Prodotto,blank=True )
+    data = models.DateTimeField(auto_now_add=True)

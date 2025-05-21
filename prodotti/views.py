@@ -4,9 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.contrib import messages
-from prodotti.models import Prodotto
+from prodotti.models import Prodotto,Commento, Valutazione
 
 # Create your views here.
 def home(request):
@@ -100,8 +100,49 @@ def dettaglio(request, id):
                 "prod.etichetta" : prod.etichetta
                 }
         return render(request, "prodotti/dettaglio.html", context)
-def recensioni(request):
-    return render(request, 'prodotti/recensioni.html')
+def recensioni(request, prodotto_id):
+    prodotto = get_object_or_404(Prodotto, id=prodotto_id)
+    valutazioni = Valutazione.objects.filter(id_prodotto=prodotto)
+    media_stelle = valutazioni.aggregate(avg=Avg('punteggio'))['avg']
+
+    commenti = Commento.objects.filter(id_prodotto=prodotto).order_by('-data') if request.user.is_authenticated else None
+
+    # Controllo se l'utente ha già recensito
+    ha_recensito = False
+    if request.user.is_authenticated:
+        ha_recensito = Commento.objects.filter(id_prodotto=prodotto, id_utente=request.user).exists()
+
+    if request.method == "POST" and request.user.is_authenticated and not ha_recensito:
+        testo = request.POST.get('testo')
+        punteggio = request.POST.get('punteggio')
+
+        if testo and punteggio:
+            try:
+                punteggio_int = int(punteggio)
+                if 1 <= punteggio_int <= 5:
+                    # Salvo commento
+                    Commento.objects.create(
+                        id_utente=request.user,
+                        id_prodotto=prodotto,
+                        testo=testo
+                    )
+                    # Salvo valutazione
+                    Valutazione.objects.create(
+                        id_utente=request.user,
+                        id_prodotto=prodotto,
+                        punteggio=punteggio_int
+                    )
+                    return redirect('recensioni', prodotto_id=prodotto.id)
+            except ValueError:
+                pass
+
+    context = {
+        'prodotto': prodotto,
+        'commenti': commenti,
+        'media_stelle': media_stelle,
+        'ha_recensito': ha_recensito,
+    }
+    return render(request, 'prodotti/recensioni.html', context)
 
 def preferiti(request):
     return render(request, 'prodotti/preferiti.html')
@@ -126,15 +167,25 @@ def user_status(request):
         "logged": request.user.is_authenticated,
         "user": request.user
     }
-
-@login_required
-def toggle_preferito(request, prodotto_id):
-    prodotto = get_object_or_404(Prodotto, pk=prodotto_id)
-    user = request.user
-
-    if user in prodotto.preferiti.all():
-        prodotto.preferiti.remove(user)
+    
+def toggle_preferito(request, id):
+    if not request.user.is_authenticated:
+        messages.error(request, "Non puoi accedere ai preferiti se non sei loggato!")
+        return redirect(login_view)
     else:
-        prodotto.preferiti.add(user)
+        prodotto = get_object_or_404(Prodotto, id=id)
+        if request.user in prodotto.preferiti.all():
+            prodotto.preferiti.remove(request.user)
+        else:
+            prodotto.preferiti.add(request.user)
+        
+        return redirect('dettaglio', id=id)
 
-    return redirect('dettaglio', prodotto_id=prodotto.id)
+def lista_preferiti(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Non puoi accedere ai preferiti se non sei loggato!")
+        return redirect(login_view)
+    else:
+        preferiti = request.user.prodotti_preferiti.all()
+        #print("Preferiti:", preferiti)
+        return render(request, 'prodotti/preferiti.html', {'prodotti': preferiti})

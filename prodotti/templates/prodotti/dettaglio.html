@@ -6,8 +6,6 @@
 <div class="product-detail">
     <div class="product-header">
         <h1>{{ prod.nome }}</h1>
-    
-        {% if user.is_authenticated %}
             <form method="post" action="{% url 'toggle_preferito' prod.id %}">
                 {% csrf_token %}
                 <button type="submit" class="favorite-btn">
@@ -18,9 +16,6 @@
                     {% endif %}
                 </button>
             </form>
-        {% else %}
-            <a href="{% url 'login' %}?next={{ request.path }}" class="favorite-btn">❤️</a>
-        {% endif %}
     </div>
 
     <div class="product-info">
@@ -43,7 +38,7 @@
         </div>
     </div>
     <div class="review-button-container">
-        <a href="{% url 'recensioni' %}" class="add-review-btn">
+        <a href="{% url 'recensioni' prod.id %}" class="add-review-btn">
             ➕ Aggiungi Recensione
         </a>
     </div>

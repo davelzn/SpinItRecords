@@ -13,8 +13,7 @@ html {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: white; /* o il colore che vuoi */
-  line-height: 60px; /* allineamento verticale se la navbar ha altezza fissa */
+  line-height: 60px;
 }
 
 
@@ -801,4 +800,107 @@ body {
 }
 .alert-text{
     color: red;
+}
+
+/* RECENSIONI ______________________________________________________________ */
+.recensioni-container {
+    background-color: #0f0f0f;
+    color: #f0e6ff;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.recensioni-container h1,
+.recensioni-container h2,
+.recensioni-container h3 {
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px #8a2be2;
+}
+
+.recensioni-container .media-stelle {
+    background: #1a1a1a;
+    padding: 1rem;
+    border: 2px solid #8a2be2;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.recensioni-container ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.recensioni-container li {
+    background-color: #1c1c1c;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #ffcc00;
+    border-radius: 8px;
+}
+
+.recensioni-container strong {
+    color: #ffcc00;
+}
+
+.recensioni-container form {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #8a2be2;
+    margin-top: 1.5rem;
+}
+
+.recensioni-container label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #f0e6ff;
+}
+
+.recensioni-container select,
+.recensioni-container textarea {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.recensioni-container button {
+    margin-top: 1rem;
+    background-color: #8a2be2;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.recensioni-container button:hover {
+    background-color: #ffcc00;
+    color: #0f0f0f;
+}
+
+.recensioni-container a {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.recensioni-container a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #ffcc00;
 }

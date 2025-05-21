@@ -1,15 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}I miei Preferiti{% endblock %}
+{% block title %} I tuoi Preferiti {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>I miei Preferiti</h1>
-    {% if preferiti %}
-    
-    </ul>
+<div class="piastre">
+    <h1>I tuoi prodotti preferiti ❤️</h1>
+
+    {% if prodotti %}
+    <div class="product-list">
+        {% for prod in prodotti %}
+        <a href="{% url 'dettaglio' prod.id %}">
+            <div class="product">
+                <div class="product-info">
+                    <h2>{{ prod.nome }}</h2>
+                    <h3>{{ prod.artista }}</h3>
+                    <p class="category">{{ prod.categoria }}</p>
+                    {% if prod.immagine.url %}
+                    <div class="product-image">
+                        <img src="{{ prod.immagine.url }}" alt="{{ prod.nome }}" />
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
     {% else %}
-    <p class="alert-text">Non hai ancora aggiunto nessun prodotto ai preferiti.</p>
+    <p class="alert-text">Non hai ancora aggiunto niente ai preferiti 😢</p>
     {% endif %}
 </div>
 {% endblock %}
