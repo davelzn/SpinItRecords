@@ -88,18 +88,22 @@ def prodotti(request):
 def dettaglio(request, id):
     if request.method=="GET":
         prod = Prodotto.objects.get(id=id)
+        media_stelle = Valutazione.objects.filter(id_prodotto=prod).aggregate(avg=Avg('punteggio'))['avg']
+
         context = {
-                'prod': prod,
-                "prod.nome": prod.nome,
-                "prod.descrizione": prod.descrizione,
-                "prod.categoria": prod.categoria,
-                "prod.immagine": prod.immagine,
-                "prod.artista" : prod.artista,
-                "prod.anno_uscita" : prod.anno_uscita,
-                "prod.link_streaming" : prod.link_streaming,
-                "prod.etichetta" : prod.etichetta
-                }
+            'prod': prod,
+            "prod.nome": prod.nome,
+            "prod.descrizione": prod.descrizione,
+            "prod.categoria": prod.categoria,
+            "prod.immagine": prod.immagine,
+            "prod.artista": prod.artista,
+            "prod.anno_uscita": prod.anno_uscita,
+            "prod.link_streaming": prod.link_streaming,
+            "prod.etichetta": prod.etichetta,
+            "media_stelle": media_stelle,
+        }
         return render(request, "prodotti/dettaglio.html", context)
+
 def recensioni(request, prodotto_id):
     prodotto = get_object_or_404(Prodotto, id=prodotto_id)
     valutazioni = Valutazione.objects.filter(id_prodotto=prodotto)
@@ -107,7 +111,6 @@ def recensioni(request, prodotto_id):
 
     commenti = Commento.objects.filter(id_prodotto=prodotto).order_by('-data') if request.user.is_authenticated else None
 
-    # Controllo se l'utente ha già recensito
     ha_recensito = False
     if request.user.is_authenticated:
         ha_recensito = Commento.objects.filter(id_prodotto=prodotto, id_utente=request.user).exists()
@@ -120,13 +123,11 @@ def recensioni(request, prodotto_id):
             try:
                 punteggio_int = int(punteggio)
                 if 1 <= punteggio_int <= 5:
-                    # Salvo commento
                     Commento.objects.create(
                         id_utente=request.user,
                         id_prodotto=prodotto,
                         testo=testo
                     )
-                    # Salvo valutazione
                     Valutazione.objects.create(
                         id_utente=request.user,
                         id_prodotto=prodotto,

@@ -6,16 +6,16 @@
 <div class="product-detail">
     <div class="product-header">
         <h1>{{ prod.nome }}</h1>
-            <form method="post" action="{% url 'toggle_preferito' prod.id %}">
-                {% csrf_token %}
-                <button type="submit" class="favorite-btn">
-                    {% if user in prod.preferiti.all %}
-                        💔
-                    {% else %}
-                        ❤️
-                    {% endif %}
-                </button>
-            </form>
+        <form method="post" action="{% url 'toggle_preferito' prod.id %}">
+            {% csrf_token %}
+            <button type="submit" class="favorite-btn">
+                {% if user in prod.preferiti.all %}
+                    💔
+                {% else %}
+                    ❤️
+                {% endif %}
+            </button>
+        </form>
     </div>
 
     <div class="product-info">
@@ -33,16 +33,26 @@
             <p><strong>Etichetta:</strong> {{ prod.etichetta }}</p>
             <p><strong>Nazione:</strong> {{ prod.nazione }}</p>
             <p><strong>Lingua:</strong> {{ prod.lingua }}</p>
+            <div class="stelleDett">
+            {% if media_stelle %}
+                <div class="media-stelle">
+                    <span class="star">⭐</span>
+                    <span class="score">{{ media_stelle|floatformat:1 }} / 5</span>
+                </div>
+            {% else %}
+                <span style="color:#666; font-style: italic; font-size:1rem; display:block; text-align:center; margin-top:15px;">Ancora nessuna valutazione</span>
+            {% endif %}
+            </div>
 
             <p><a href="{{ prod.link_streaming }}" target="_blank" class="streaming-link">Ascolta l'album in streaming</a></p>
         </div>
     </div>
+
     <div class="review-button-container">
         <a href="{% url 'recensioni' prod.id %}" class="add-review-btn">
             ➕ Aggiungi Recensione
         </a>
     </div>
-
 
     <a href="{% url 'prodotti' %}" class="back-link">Ritorna ai Prodotti</a>
 </div>

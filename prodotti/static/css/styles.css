@@ -339,7 +339,7 @@ body {
 
 
 
-/* ---- STILE PER LA PAGINA DI DETTAGLIO PRODOTTO ---- */
+/* ---- STILE PER LA PAGINA DI DETTAGLIO PRODOTTO ----------------------------------- */
 
 /* Contenitore del dettaglio prodotto */
 .product-detail {
@@ -474,6 +474,39 @@ body {
 .back-link:hover {
     background-color: #9B51E0;
 }
+.stelleDett {
+    margin-top: 25px;
+    text-align: center;
+    user-select: none;
+}
+
+.stelleDett .media-stelle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #000;
+    font-size: 1.6rem;
+}
+
+.stelleDett .media-stelle .star {
+    font-size: 2.2rem;
+    color: #F2C94C; /* giallo bomba */
+    text-shadow:
+        0 0 4px #000,
+        0 0 8px #000,
+        0 0 12px #000;
+}
+
+.stelleDett .media-stelle .score {
+    color: #000;
+}
+
+
+
+
+
 
 
 /* --- STILE PER LA HOME PAGE --- */
